@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Modificare dimensiune cu Gamma</title>
+</head>
+<body>
+    <p>Unghiul Gamma: <span id="gammaValue">0</span></p>
+    <svg width="200" height="200">
+        <circle id="shape" cx="100" cy="100" r="50" fill="blue"></circle>
+    </svg>
+
+    <script>
+        window.addEventListener("deviceorientation", onDeviceOrientation);
+
+        function onDeviceOrientation(event) {
+            const gamma = event.gamma;
+            document.getElementById("gammaValue").textContent = gamma;
+            const circle = document.getElementById("shape");
+            const scaleFactor = 1 + gamma / 90; // Modificați 90 în funcție de necesitățile dvs.
+            circle.setAttribute("r", 50 * scaleFactor);
+        }
+    </script>
+</body>
+</html>
